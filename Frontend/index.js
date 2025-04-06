@@ -154,24 +154,24 @@ const imprimirResultadoBusquedaProducto = (dataProductResponse, eansMultiCodes) 
         <div class="product-header">
             <h2 class="product-name">${dataProductResponse.productName}</h2>
             <p class="product-description"><strong>Descripción:</strong> ${dataProductResponse.metaTagDescription}</p>
-            <p class="product-description"><strong>Precio:</strong> ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.Price ?? 'sin respuesta'}</p>
-            <p class="product-description"><strong>Precio Lista:</strong> ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.ListPrice ?? 'sin respuesta'}</p>
-            <p class="product-description"><strong>Precio sin descuento:</strong> ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.PriceWithoutDiscount ?? 'sin respuesta'}</p>
-            <p class="product-description"><strong>Precio de venta completo:</strong> ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.FullSellingPrice ?? 'sin respuesta'}</p>
+            <p class="product-description"><strong>Precio:</strong> $ ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.Price ?? 'sin respuesta'}</p>
+            <p class="product-description"><strong>Precio Lista:</strong> $ ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.ListPrice ?? 'sin respuesta'}</p>
+            <p class="product-description"><strong>Precio sin descuento:</strong> $ ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.PriceWithoutDiscount ?? 'sin respuesta'}</p>
+            <p class="product-description"><strong>Precio de venta completo:</strong> $ ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.FullSellingPrice ?? 'sin respuesta'}</p>
             <p class="product-link"><strong>Enlace:</strong> <a href="${dataProductResponse.link}" target="_blank">Click para Ver producto en tienda</a></p>
         </div>
 
         <h3 class="section-title">Códigos EAN</h3>
         <ul class="ean-list">
-            ${eansMultiCodes.map(ean => `<li>${ean}</li>`).join('')}
+            ${eansMultiCodes.map(ean => `<li class="ean-tag">${ean}</li>`).join('')}
         </ul>
         <h3 class="section-title">Código EAN principal</h3>
         <ul class="ean-list">
-            ${dataProductResponse.items.map(item => `<li>${item.ean}</li>`).join('')}
+            ${dataProductResponse.items.map(item => `<li class="ean-tag">${item.ean}</li>`).join('')}
         </ul>
 
         <h3 class="section-title">Imágenes del Producto</h3>
-        <div class="images-container">
+        <div class="img-list">
             ${dataProductResponse.items[0].images.map(image => `
                 <img class="product-image" src="${image.imageUrl}" alt="${image.imageLabel}" width="200">
             `).join('')}

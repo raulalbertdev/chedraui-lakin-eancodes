@@ -7,21 +7,46 @@
     <title>Consulta de Productos Chedraui</title>
     <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet" href="./loader.css">
+    <link rel="stylesheet" href="./explicacion.css">
+    <link rel="stylesheet" href="./input.css">
+    <link rel="stylesheet" href="./resultado.css">
+    <link rel="stylesheet" href="./footer.css">
 </head>
 <body>
-    <h1>Software Básico de Productos (Códigos EAN) Chedraui</h1>
-    <h5>*Desarrollado por Raúl Alberto Moheno Zavaleta*</h5>
-    <p>Explicación sencilla: Dirígete a la página oficial de chedraui.com.mx, busca el producto que deseas obtener su código ean, una vez encontrado el producto, copia el número de referencia que tiene debajo del nombre del producto, y pégalo en el campo "Número ID Referencia Producto" de esta página para obtener/extraer los códigos EAN de dicho producto.
-    </p>
-    <p>
-        Nota: Es importante considerar que esto está vinculado y depende directamente de la página oficial de chedraui.com.mx, por lo que puede suceder que haya productos que no se encuentren en esta página o que los códigos ean no funcionen directamente en los puntos de venta de tu sucursal.
-    </p>
+    <h1>Software Básico de Consulta de Productos (Códigos EAN) Chedraui</h1>
+    <div class="info-box">
+        <p class="info-title"><span class="icon">ℹ️</span> <strong>Explicación sencilla:</strong></p>
+        <p>
+            Dirígete a la página oficial de <a href="https://www.chedraui.com.mx/" target="_blank">chedraui.com.mx</a>, busca el producto que deseas obtener su código EAN.
+            Una vez encontrado el producto, copia el número de referencia que tiene debajo del nombre del producto
+            y pégalo en el campo <em>"Número ID Referencia Producto"</em> de esta página para extraer los códigos EAN de dicho producto.
+        </p>
+    </div>
+    
+    <div class="note-box">
+        <p class="note-title"><span class="icon">⚠️</span> <strong>Nota:</strong></p>
+        <p>
+            Es importante considerar que esto está vinculado y depende directamente de la página oficial de <a href="https://www.chedraui.com.mx/" target="_blank">chedraui.com.mx</a>,
+            por lo que puede suceder que no se encuentren absolutamente todos los productos que hay en tu sucursal o que los códigos EAN no funcionen
+            correctamente en los puntos de venta de tu sucursal, por lo que se sugiere verificar.
+        </p>
+    </div>
     
 
-    <div class="search-container">
+    <div class="form-container">
+        <input
+            type="text"
+            id="productoId"
+            placeholder="Ingrese el Número ID Referencia Producto del producto"
+            class="input-referencia"
+        />
+        <button onclick="buscarProducto()" class="btn-buscar">Buscar</button>
+    </div>
+
+    <!-- <div class="search-container">
         <input type="text" id="productoId" placeholder="Ingrese el Número ID Referencia Producto del producto">
         <button onclick="buscarProducto()">Buscar</button>
-    </div>
+    </div> -->
     <!-- <div class="search-container">
         <button onclick="exportarAPDF()">Generar PDF</button>
         <button onclick="guardarProductosLocalStorage()">Guardar productos para exportacion</button>
@@ -31,6 +56,16 @@
     <p>Explicación sencilla para generar archivos PDF con lista de productos con imágenes y sus respectivos códigos ean: Realiza la búsqueda de los productos por medio de su Número ID Referencia Producto, supongamos que ya buscaste 15 productos que deseas exportar a un PDF, debes darle click al botón "Guardar productos para exportación",esto ayuda a que cuando recargues la página, la información de los productos quede guardada temporalmente en la página web, posteriormente puedes seguir buscando más productos y volver a guardarlos para exportarlos, juntando los que ya tenías guardados con los nuevos que deseas agregar. Una vez ya teniendo listo eso, da click al botón "Generar PDF" para que de esa manera te genere el PDF </p> -->
 
     <div id="resultado"></div>
+
+    <footer class="footer">
+        <p>
+            © 2025 Desarrollado por 
+            <a href="https://www.linkedin.com/in/raulalbertdev/" target="_blank" rel="noopener noreferrer">
+                Raúl Alberto Moheno Zavaleta
+            </a>
+        </p>
+    </footer>
+    
 
     <script src="./index.js"></script>
 </body>
