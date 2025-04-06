@@ -8,7 +8,7 @@ body {
 h1 { 
     color: #2c3e50; 
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 .search-container { 
     display: flex; 
@@ -52,13 +52,9 @@ button:hover {
     margin-bottom: 10px;
 }
 .product-description {
-    color: #7f8c8d;
+    color: rgba(130, 135, 136, 0.795);
     line-height: 1.6;
     margin-bottom: 15px;
-}
-.product-link a {
-    color: #3498db;
-    text-decoration: none;
 }
 .product-link a:hover {
     text-decoration: underline;

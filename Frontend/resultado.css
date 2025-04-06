@@ -8,7 +8,7 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #3333333a;
 }
 
 #resultado h2 {
@@ -27,7 +27,7 @@
 }
 
 #resultado a {
-    color: #007bff;
+    color: #302079b2;
     text-decoration: none;
 }
 
@@ -47,7 +47,7 @@
     color: #004080;
     padding: 6px 12px;
     border-radius: 20px;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 500;
     border: 1px solid #b3d1ff;
 }
@@ -60,7 +60,7 @@
 }
 
 .img-list img {
-    width: 160px;
+    width: 250px;
     height: auto;
     border-radius: 8px;
     border: 1px solid #ddd;

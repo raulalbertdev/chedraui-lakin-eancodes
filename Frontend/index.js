@@ -149,15 +149,30 @@ const extraerEANs = (multiEanArray) => {
 };
 
 const imprimirResultadoBusquedaProducto = (dataProductResponse, eansMultiCodes) => {
+
+    const tipoProducto = dataProductResponse?.['Tipo de producto']?.[0] ?? "Sin Información / No Aplica"
+    const PaisOrigen = dataProductResponse?.['País de Origen']?.[0] ?? "Sin Información / No Aplica"
+    const contenidoEmpaque = dataProductResponse?.['Contenido del empaque']?.[0] ?? "Sin Información / No Aplica"
+    const tamanoPorcion = dataProductResponse?.['Tamaño de la Porción']?.[0] ?? "Sin Información / No Aplica"
+    const precio = dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.Price ?? 'Sin Información / No Aplica'
+    const precioLista = dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.ListPrice ?? 'Sin Información / No Aplica'
+    const precioSinDescuento = dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.PriceWithoutDiscount ?? 'Sin Información / No Aplica'
+    const precioVentaCompleto = dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.FullSellingPrice ?? 'Sin Información / No Aplica'
+
     document.getElementById("resultado").innerHTML = `
     <div class="product-container">
         <div class="product-header">
             <h2 class="product-name">${dataProductResponse.productName}</h2>
+            <p class="product-description"><strong>Número de Referencia, SKU o Product ID:</strong> ${dataProductResponse.productId}</p>
             <p class="product-description"><strong>Descripción:</strong> ${dataProductResponse.metaTagDescription}</p>
-            <p class="product-description"><strong>Precio:</strong> $ ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.Price ?? 'sin respuesta'}</p>
-            <p class="product-description"><strong>Precio Lista:</strong> $ ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.ListPrice ?? 'sin respuesta'}</p>
-            <p class="product-description"><strong>Precio sin descuento:</strong> $ ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.PriceWithoutDiscount ?? 'sin respuesta'}</p>
-            <p class="product-description"><strong>Precio de venta completo:</strong> $ ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.FullSellingPrice ?? 'sin respuesta'}</p>
+            <p class="product-description"><strong>Tipo de Producto:</strong> ${tipoProducto}</p>
+            <p class="product-description"><strong>Pais de Origen:</strong> ${PaisOrigen}</p>
+            <p class="product-description"><strong>Contenido Empaque:</strong> ${contenidoEmpaque}</p>
+            <p class="product-description"><strong>Tamaño de la Porción:</strong> ${tamanoPorcion}</p>
+            <p class="product-description"><strong>Precio:</strong> $ ${precio}</p>
+            <p class="product-description"><strong>Precio Lista:</strong> $ ${precioLista}</p>
+            <p class="product-description"><strong>Precio sin descuento:</strong> $ ${precioSinDescuento}</p>
+            <p class="product-description"><strong>Precio de venta completo:</strong> $ ${precioVentaCompleto}</p>
             <p class="product-link"><strong>Enlace:</strong> <a href="${dataProductResponse.link}" target="_blank">Click para Ver producto en tienda</a></p>
         </div>
 
