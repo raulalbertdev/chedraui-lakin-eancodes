@@ -3,117 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Productos</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            max-width: 900px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            color: #333;
-        }
-        h1 { 
-            color: #2c3e50; 
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .search-container { 
-            display: flex; 
-            margin-bottom: 30px;
-            gap: 10px;
-        }
-        input { 
-            padding: 10px; 
-            flex-grow: 1; 
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        button { 
-            padding: 10px 20px; 
-            background-color: #3498db; 
-            color: white; 
-            border: none; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #2980b9;
-        }
-        .product-container {
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .product-header {
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-        .product-name {
-            font-size: 24px;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        .product-description {
-            color: #7f8c8d;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        .product-link a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        .product-link a:hover {
-            text-decoration: underline;
-        }
-        .section-title {
-            font-size: 18px;
-            color: #2c3e50;
-            margin: 25px 0 15px 0;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #eee;
-        }
-        .ean-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .ean-list li {
-            background-color: #e8f4fc;
-            padding: 8px 12px;
-            margin-bottom: 5px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-right: 10px;
-        }
-        .images-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .product-image {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px;
-            background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        .product-image:hover {
-            transform: scale(1.02);
-        }
-        .error-message {
-            color: #e74c3c;
-            padding: 15px;
-            background-color: #fdecea;
-            border-radius: 4px;
-            border-left: 4px solid #e74c3c;
-        }
-    </style>
+    <meta name="author" content="Raul Alberto Moheno Zavaleta">
+    <title>Consulta de Productos Chedraui</title>
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./loader.css">
 </head>
 <body>
     <h1>Software Básico de Productos (Códigos EAN) Chedraui</h1>
@@ -129,13 +22,13 @@
         <input type="text" id="productoId" placeholder="Ingrese el Número ID Referencia Producto del producto">
         <button onclick="buscarProducto()">Buscar</button>
     </div>
-    <div class="search-container">
+    <!-- <div class="search-container">
         <button onclick="exportarAPDF()">Generar PDF</button>
         <button onclick="guardarProductosLocalStorage()">Guardar productos para exportacion</button>
         <button onclick="exportarListaSimpleTxt()">Exportar Lista de productos en archivo simple de texto</button>
     </div>
     
-    <p>Explicación sencilla para generar archivos PDF con lista de productos con imágenes y sus respectivos códigos ean: Realiza la búsqueda de los productos por medio de su Número ID Referencia Producto, supongamos que ya buscaste 15 productos que deseas exportar a un PDF, debes darle click al botón "Guardar productos para exportación",esto ayuda a que cuando recargues la página, la información de los productos quede guardada temporalmente en la página web, posteriormente puedes seguir buscando más productos y volver a guardarlos para exportarlos, juntando los que ya tenías guardados con los nuevos que deseas agregar. Una vez ya teniendo listo eso, da click al botón "Generar PDF" para que de esa manera te genere el PDF </p>
+    <p>Explicación sencilla para generar archivos PDF con lista de productos con imágenes y sus respectivos códigos ean: Realiza la búsqueda de los productos por medio de su Número ID Referencia Producto, supongamos que ya buscaste 15 productos que deseas exportar a un PDF, debes darle click al botón "Guardar productos para exportación",esto ayuda a que cuando recargues la página, la información de los productos quede guardada temporalmente en la página web, posteriormente puedes seguir buscando más productos y volver a guardarlos para exportarlos, juntando los que ya tenías guardados con los nuevos que deseas agregar. Una vez ya teniendo listo eso, da click al botón "Generar PDF" para que de esa manera te genere el PDF </p> -->
 
     <div id="resultado"></div>
 

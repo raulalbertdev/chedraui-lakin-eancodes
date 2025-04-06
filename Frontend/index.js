@@ -1,5 +1,5 @@
-
 var dataProductListGet = []
+var UrlAPIFetch = "http://localhost:3000"
 
 function guardarProductosLocalStorage () {
     
@@ -35,17 +35,18 @@ async function buscarProducto() {
         return;
     }
 
+    document.getElementById("resultado").innerHTML = '<div class="loader"></div>';
+
     try {
-        const response = await fetch(`http://localhost:3000/producto/${productId}`);
+        const response = await fetch(`${UrlAPIFetch}/producto/${productId}`);
         const dataResponse = await response.json();
         const data = dataResponse[0]
-
-        
 
         if (data.error) {
             document.getElementById("resultado").innerHTML = `
                 <div class="error-message">${data.error}</div>
             `;
+            console.log(data.error)
             return;
         }
 
@@ -59,32 +60,9 @@ async function buscarProducto() {
             imageUrl: data.items[0].images[0].imageUrl
         })
 
-        // Mostrar los datos en la página
-        document.getElementById("resultado").innerHTML = `
-            <div class="product-container">
-                <div class="product-header">
-                    <h2 class="product-name">${data.productName}</h2>
-                    <p class="product-description"><strong>Descripción:</strong> ${data.metaTagDescription}</p>
-                    <p class="product-link"><strong>Enlace:</strong> <a href="${data.link}" target="_blank">Ver producto en tienda</a></p>
-                </div>
+        // Mostrar lo0s datos en la página
+        imprimirResultadoBusquedaProducto (data, eansMulti)
 
-                <h3 class="section-title">Códigos EAN</h3>
-                <ul class="ean-list">
-                    ${eansMulti.map(ean => `<li>${ean}</li>`).join('')}
-                </ul>
-                <h3 class="section-title">Código EAN definitivo</h3>
-                <ul class="ean-list">
-                    ${data.items.map(item => `<li>${item.ean}</li>`).join('')}
-                </ul>
-
-                <h3 class="section-title">Imágenes del Producto</h3>
-                <div class="images-container">
-                    ${data.items[0].images.map(image => `
-                        <img class="product-image" src="${image.imageUrl}" alt="${image.imageLabel}" width="200">
-                    `).join('')}
-                </div>
-            </div>
-        `;
     } catch (error) {
         console.error("Error al obtener datos:", error);
         document.getElementById("resultado").innerHTML = `
@@ -169,3 +147,35 @@ const extraerEANs = (multiEanArray) => {
     
     return eans;
 };
+
+const imprimirResultadoBusquedaProducto = (dataProductResponse, eansMultiCodes) => {
+    document.getElementById("resultado").innerHTML = `
+    <div class="product-container">
+        <div class="product-header">
+            <h2 class="product-name">${dataProductResponse.productName}</h2>
+            <p class="product-description"><strong>Descripción:</strong> ${dataProductResponse.metaTagDescription}</p>
+            <p class="product-description"><strong>Precio:</strong> ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.Price ?? 'sin respuesta'}</p>
+            <p class="product-description"><strong>Precio Lista:</strong> ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.ListPrice ?? 'sin respuesta'}</p>
+            <p class="product-description"><strong>Precio sin descuento:</strong> ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.PriceWithoutDiscount ?? 'sin respuesta'}</p>
+            <p class="product-description"><strong>Precio de venta completo:</strong> ${dataProductResponse.items?.[0].sellers?.[0].commertialOffer?.FullSellingPrice ?? 'sin respuesta'}</p>
+            <p class="product-link"><strong>Enlace:</strong> <a href="${dataProductResponse.link}" target="_blank">Click para Ver producto en tienda</a></p>
+        </div>
+
+        <h3 class="section-title">Códigos EAN</h3>
+        <ul class="ean-list">
+            ${eansMultiCodes.map(ean => `<li>${ean}</li>`).join('')}
+        </ul>
+        <h3 class="section-title">Código EAN principal</h3>
+        <ul class="ean-list">
+            ${dataProductResponse.items.map(item => `<li>${item.ean}</li>`).join('')}
+        </ul>
+
+        <h3 class="section-title">Imágenes del Producto</h3>
+        <div class="images-container">
+            ${dataProductResponse.items[0].images.map(image => `
+                <img class="product-image" src="${image.imageUrl}" alt="${image.imageLabel}" width="200">
+            `).join('')}
+        </div>
+    </div>
+`;
+}
